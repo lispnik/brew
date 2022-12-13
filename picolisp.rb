@@ -14,7 +14,7 @@ class Picolisp < Formula
   
   def install
     system "cd src; make SHARED='-dynamiclib -undefined dynamic_lookup' STRIP=':'"
-    inreplace ["bin/pil", "lib/bash_completion", "man/man1/picolisp.1"] do |s|
+    inreplace ["bin/pil", "lib/bash_completion", "man/man1/picolisp.1", "bin/vip"] do |s|
       s.gsub! "/usr", HOMEBREW_PREFIX
     end
     inreplace Dir["doc/*.html"] do |s|
@@ -23,8 +23,9 @@ class Picolisp < Formula
     bash_completion.install "lib/bash_completion" => "picolisp"
     man.install "man/man1"
     bin.install "bin/pil", "bin/picolisp"
-    (lib/"picolisp").install "ext.l", "lib.l", "lib.css", "lib", "img", "loc", "doc"
-    (lib/"picolisp/bin").install "bin/balance", "bin/httpGate", "bin/psh", "bin/ssl", "bin/vip", "bin/watchdog"
+    (lib/"picolisp").install "ext.l", "lib.l", "lib.css", "lib", "img", "loc", "doc", "misc", "src", "test"
+    (lib/"picolisp/bin").install "bin/balance", "bin/httpGate", "bin/psh", "bin/ssl", "bin/vip", "bin/watchdog", "bin/pty"
+    doc.install "README", "INSTALL", "COPYING"
   end
 
   test do
