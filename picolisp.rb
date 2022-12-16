@@ -3,7 +3,7 @@ class Picolisp < Formula
   homepage "https://picolisp.com/wiki/?home"
   url "https://software-lab.de/pil21.tgz"
   version "21"
-  sha256 "df30bc136747bbce4c64b6e9edb26a71711a2c26faec5568cd23a25bd58850c1"
+  sha256 "01c9e74d1597208588426b8df2d54f8a1214e41877399fb7f6ae01181d35703d"
   license "MIT"
 
   depends_on "openssl@1.1"
@@ -23,7 +23,8 @@ class Picolisp < Formula
     bash_completion.install "lib/bash_completion" => "picolisp"
     man.install "man/man1"
     bin.install "bin/pil", "bin/picolisp"
-    (lib/"picolisp").install "ext.l", "lib.l", "lib.css", "lib", "img", "loc", "doc", "misc", "src", "test"
+    (lib/"picolisp").install "ext.l", "lib.l", "lib.css", "lib", "img", "loc", "doc", "misc", "test"
+    (lib/"picolisp/src").install Dir["src/.h", "src/*.ll", "src/*.c", "src/*.l", "src/*.s"], "src/MakeFile", "src/lib"
     (lib/"picolisp/bin").install "bin/balance", "bin/httpGate", "bin/psh", "bin/ssl", "bin/vip", "bin/watchdog", "bin/pty"
     doc.install "README", "INSTALL", "COPYING"
   end
