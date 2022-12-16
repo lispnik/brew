@@ -31,5 +31,22 @@ class Picolisp < Formula
 
   test do
     system "#{bin}/pil -version -bye"
+    system "#{bin}/pil <<EOF
+(load \"@lib/clang.l\")
+
+(clang \"ltest\" NIL
+   (cbTest (Fun) cbTest 'N Fun) )
+
+long cbTest(int(*fun)(int,int,int,int,int)) {
+   return fun(1,2,3,4,5);
+}
+/**/
+
+(cbTest
+   (lisp 'cbTest
+      '((A B C D E)
+         (msg (list A B C D E))
+         (* A B C D E) ) ) )
+EOF"
   end
 end
