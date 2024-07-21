@@ -3,7 +3,7 @@ class Picolisp < Formula
   homepage "https://picolisp.com/wiki/?home"
   url "https://software-lab.de/pil21.tgz"
   version "21"
-  sha256 "01c9e74d1597208588426b8df2d54f8a1214e41877399fb7f6ae01181d35703d"
+  sha256 "c940c59d8651e4b5da0ed881a810fc9225280e1fa53d83879f99bc15b4f4ea7e"
   license "MIT"
 
   depends_on "openssl@1.1"
